@@ -38,24 +38,25 @@ Useful website list:
     •	You can use breakpoints and the integrated terminal to debug and inspect your app.
 ------------------------------------------------------------------------------------------------------------------------------
 
-
-
-
+==>> HOW TO RUN A PROJECT/APP:
 Summary of Steps: 
 1. Install Node.js (v20 or later): https://nodejs.org (.msi file)
-   
 2. Install the global packages for React Native CLI and Expo CLI:
-   
       i) Open terminal
       ii) npm install -g react-native-cli
       iii) npm install -g expo-cli
       iv) Check npm version: npm -v (Node Package Manager)
-
 4. Install basic/empty project through CLI:
-   a. npm install -g reactnative -cli
-   b. npm install -g expo-cli
-   
+      a. npm install -g reactnative -cli
+      b. npm install -g expo-cli  
 5. Project Installation:
-   a.npx create-expo-app --template
-   
+      a.npx create-expo-app --template   
 7. Terminal: npm start
+
+/////////////////////////////////////////////////////////////////////////////////////////
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+   1. Open a terminal from any directory
+   2. Terminal command: expo init
+   3. Give the app name >> ENTER
+   4. Choose what type of app/template you want to download (user down arrow key) >> ENTER
+   5. Then the app and its dependencies will be downloading...
