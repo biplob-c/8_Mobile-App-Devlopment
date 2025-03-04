@@ -56,8 +56,12 @@ Summary of Steps:
 
 /////////////////////////////////////////////////////////////////////////////////////////
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+For a fresh project:
+
    1. Open a terminal from any directory
    2. Terminal command: expo init
    3. Give the app name >> ENTER
    4. Choose what type of app/template you want to download (user down arrow key) >> ENTER
    5. Then the app and its dependencies will be downloading...
+   6. 
+   7. [When downloading is done] -->> Go to the created project/App -->> Open a terminal from that directory -->> npm start ->> Follow the termianl instrauctions
