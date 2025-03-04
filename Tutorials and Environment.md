@@ -39,9 +39,11 @@ Useful website list:
 ------------------------------------------------------------------------------------------------------------------------------
 
 ==>> HOW TO RUN A PROJECT/APP:
+
 Summary of Steps: 
 1. Install Node.js (v20 or later): https://nodejs.org (.msi file)
 2. Install the global packages for React Native CLI and Expo CLI:
+
       i) Open terminal
       ii) npm install -g react-native-cli
       iii) npm install -g expo-cli
