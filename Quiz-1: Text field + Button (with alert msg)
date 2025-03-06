@@ -1,0 +1,64 @@
+import React from 'react';
+import {StyleSheet, TextInput, Button, Text, View, Alert} from 'react-native';
+import {SafeAreaView, SafeAreaProvider} from 'react-native-safe-area-context';
+
+const Separator = () => <View style={styles.separator}/>
+
+const TextInputExample = () => {
+  const [text, onChangeText] = React.useState('Useless Text');
+  const [number, onChangeNumber] = React.useState('');
+
+  return (
+    <SafeAreaProvider>
+      <SafeAreaView>
+        <View>
+          <TextInput
+            style={styles.input}
+            onChangeText={onChangeText}
+            value={text}
+            />
+          <TextInput
+              style={styles.input}
+                onChangeText={onChangeNumber}
+                value={number}
+                placeholder="useless placeholder"
+                keyboardType="numeric"
+            />
+            
+          <Separator />
+
+            <Text style={styles.title}>
+              The title and onPress handler are required.
+            </Text>
+            <Button
+              title="Button - Press me"
+              onPress={() => Alert.alert('You have pressed the Simple button!')}
+            />
+          <Separator />
+        </View>
+      </SafeAreaView>
+    </SafeAreaProvider>
+  );
+};
+
+
+const styles = StyleSheet.create({
+  input: {
+    height: 40,
+    margin: 10,
+    borderWidth: 5,
+    padding: 10,
+    backgroundColor: '#bbfaf3',
+  },
+  title: {
+    textAlign: 'center',
+    marginVertical: 8,
+    padding: 10,
+  },
+  separator: {
+    marginVertical: 8,
+    borderBottomColor: '#737373',
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+});
+export default TextInputExample;
