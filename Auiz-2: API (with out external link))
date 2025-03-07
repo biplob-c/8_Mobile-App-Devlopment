@@ -1,0 +1,109 @@
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button } from 'react-native';
+
+const data = {
+  title: "The Basics - Networking",
+  description: "Your app fetched this from a remote endpoint!",
+  movies: [
+    {
+      id: "1",
+      title: "Star Wars",
+      releaseYear: "1977"
+    },
+    {
+      id: "2",
+      title: "Back to the Future",
+      releaseYear: "1985"
+    },
+    {
+      id: "3",
+      title: "The Matrix",
+      releaseYear: "1999"
+    },
+    {
+      id: "4",
+      title: "Inception",
+      releaseYear: "2010"
+    },
+    {
+      id: "5",
+      title: "Interstellar",
+      releaseYear: "2014"
+    }
+  ]
+};
+
+const App = () => {
+  const [releaseYear, setReleaseYear] = useState('');
+  const [selectedMovie, setSelectedMovie] = useState(null);
+
+  const handleInputChange = (text) => {
+    setReleaseYear(text);
+  };
+
+  const handleButtonPress = () => {
+    const movie = data.movies.find((m) => m.releaseYear === releaseYear);
+    if (movie) {
+      setSelectedMovie(movie);
+    } else {
+      alert('No movie found for the given release year.');
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.label}>Enter a release year:</Text>
+      <TextInput
+        value={releaseYear}
+        onChangeText={handleInputChange}
+        keyboardType="numeric"
+        maxLength={4}
+        style={styles.input}
+      />
+      <Button title="Search" onPress={handleButtonPress} />
+      {selectedMovie && (
+        <View style={styles.resultContainer}>
+          <Text style={styles.resultLabel}>Title:</Text>
+          <Text style={styles.resultText}>{selectedMovie.title}</Text>
+          <Text style={styles.resultLabel}>Release Year:</Text>
+          <Text style={styles.resultText}>{selectedMovie.releaseYear}        
+ </Text>
+        </View>
+      )}
+    </View>
+  );
+};
+
+const styles = {
+  container: {
+    flex: 1,
+    justifyContent: 'left',
+    alignItems: 'left',
+    padding: 20,
+  },
+  label: {
+    fontSize: 18,
+    marginBottom: 10,
+  },
+  input: {
+    width: '100%',
+    height: 40,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    marginBottom: 20,
+  },
+  resultContainer: {
+    marginTop: 5,
+  },
+  resultLabel: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  resultText: {
+    fontSize: 14,
+  },
+};
+
+export default App;
