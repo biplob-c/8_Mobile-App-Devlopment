@@ -27,7 +27,8 @@ const App = () => {
   }, []);
 
   return (
-    <View style={{flex: 1, padding: 24, backgroundColor: '#bdfffe', borderRadius: 45}}>
+    <View style={{flex: 1, padding: 24, backgroundColor: '#bdfffe', borderRadius: 45, alignItems: 'center', paddingTop: 100, borderLeftColor: 'red', 
+    borderLeftWidth: 10, borderRightWidth: 40, borderRightColor: '#f5f258'}}>
       {isLoading ? (
         <ActivityIndicator />
       ) : (
