@@ -1,0 +1,118 @@
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, Button, FlatList, ActivityIndicator } from 'react-native';
+
+const App = () => {
+  const [releaseYear, setReleaseYear] = useState('');
+  const [selectedMovie, setSelectedMovie] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+  const [movies, setMovies] = useState([]);
+
+  const handleInputChange = (text) => {
+    setReleaseYear(text);
+  };
+
+  const handleButtonPress = () => {
+    const movie = movies.find((m) => m.releaseYear === releaseYear);
+    if (movie) {
+      setSelectedMovie(movie);
+    } else {
+      alert('No movie found for the given release year.');
+    }
+  };
+
+  useEffect(() => {
+    fetch('https://reactnative.dev/movies.json')
+      .then(response => response.json())
+      .then(json => {
+        setMovies(json.movies);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error(error);
+        setLoading(false);
+      });
+  }, []);
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.label}>Enter a release year:</Text>
+      <TextInput
+        value={releaseYear}
+        onChangeText={handleInputChange}
+        keyboardType="numeric"
+        maxLength={4}
+        style={styles.input}
+      />
+      <Button title="Search" onPress={handleButtonPress} />
+
+      {selectedMovie && (
+        <View style={styles.resultContainer}>
+          <Text style={styles.resultLabel}>Title:</Text>
+          <Text style={styles.resultText}>{selectedMovie.title}</Text>
+          <Text style={styles.resultLabel}>Release Year:</Text>
+          <Text style={styles.resultText}>{selectedMovie.releaseYear}</Text>
+        </View>
+        
+      )}
+      
+      {isLoading ? (
+        <ActivityIndicator />
+      ) : (
+        <FlatList
+          data={movies}
+          //keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <Text style={styles.movieItem}>
+              {item.id}. {item.releaseYear} - {item.title}
+            </Text>
+          )}
+        />
+      )}
+    </View>
+    
+  );
+};
+
+const styles = {
+  container: {
+    flex: 1,
+    padding: 24,
+    backgroundColor: 'white',
+    borderRadius: 45,
+    alignItems: 'center',
+    paddingTop: 100,
+    borderLeftColor: 'red',
+    borderLeftWidth: 10,
+    borderRightWidth: 40,
+    borderRightColor: '#f5f258',
+  },
+  label: {
+    fontSize: 18,
+    marginBottom: 10,
+  },
+  input: {
+    width: '100%',
+    height: 40,
+    borderColor: '#ccc',
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    marginBottom: 20,
+  },
+  resultContainer: {
+    marginTop: 20,
+  },
+  resultLabel: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  resultText: {
+    fontSize: 16,
+  },
+  movieItem: {
+    fontSize: 16,
+    marginBottom: 10,
+  },
+};
+
+export default App;
