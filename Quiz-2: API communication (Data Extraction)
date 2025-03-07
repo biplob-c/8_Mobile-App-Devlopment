@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, FlatList, Text, View} from 'react-native';
 
-
 const App = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -10,8 +9,12 @@ const App = () => {
     try {
       const response = await fetch('https://reactnative.dev/movies.json');
       const json = await response.json();
-
-      setData(json.movies);
+      //step:1
+      const movie_id = json.movies.filter(movie => movie.id == 2);
+      
+      //step:2
+      setData(movie_id);
+      //setData(json.movies);
     } catch (error) {
       console.error(error);
     } finally {
@@ -24,18 +27,20 @@ const App = () => {
   }, []);
 
   return (
-    <View style={{flex: 5, padding: 24, backgroundColor: "#81f5f7", borderColor: "#ed665a", borderRadius: 50}}>
+    <View style={{flex: 1, padding: 24, backgroundColor: '#bdfffe', borderRadius: 45}}>
       {isLoading ? (
         <ActivityIndicator />
       ) : (
         <FlatList
           data={data}
+          //step:3
           keyExtractor={({id}) => id}
+          //keyExtractor = {item => item.id.toString()}
           renderItem={({item}) => (
             <Text>
               {item.id}. {item.releaseYear} - {item.title}
             </Text>
-          )} 
+          )}
         />
       )}
     </View>
