@@ -12,10 +12,11 @@ const App = () => {
   };
 
   const handleButtonPress = () => {
-    const movie = movies.find((m) => m.releaseYear == releaseYear);
+    const movie = movies.find((bip) => bip.releaseYear == releaseYear);
     if (movie) {
       setSelectedMovie(movie);
-    } else {
+    } 
+    else {
       alert('No movie found for the given release year.');
     }
   };
@@ -52,7 +53,6 @@ const App = () => {
           <Text style={styles.resultLabel}>Release Year:</Text>
           <Text style={styles.resultText}>{selectedMovie.releaseYear}</Text>
         </View>
-        
       )}
       
       {isLoading ? (
