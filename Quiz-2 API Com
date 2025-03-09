@@ -12,7 +12,7 @@ const App = () => {
   };
 
   const handleButtonPress = () => {
-    const movie = movies.find((m) => m.releaseYear === releaseYear);
+    const movie = movies.find((m) => m.releaseYear == releaseYear);
     if (movie) {
       setSelectedMovie(movie);
     } else {
