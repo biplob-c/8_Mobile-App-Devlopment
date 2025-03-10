@@ -8,3 +8,25 @@ https://snack.expo.dev/@biplob.c/098f6b?platform=android
 
 => Next class: Project
 => Assigment (will be announced)
+/////////////////////////
+
+
+Quiz - 3: (09/0320250
+Extract ID, name, Email from the below json:
+https://jsonplaceholder.typicode.com/comments
+
+
+
+
+Run projects:
+from local
+
+1. load provided project in VS Code (local PC)
+2. from VS code - Terminal (tab- at bottom) >> Type "npm install"
+3. Or
+From the directory open terminal >> npm iinstall
+when complete the proejct creation: npm start >>Open on web (w)
+
+
+Task: Ask to upload projects and practice those projects
+Quiz: Any part of the project shown in the class
