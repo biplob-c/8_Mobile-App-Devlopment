@@ -43,16 +43,20 @@ Useful website list:
 Summary of Steps: 
 1. Install Node.js (v20 or later): https://nodejs.org (.msi file)
 2. Install the global packages for React Native CLI and Expo CLI:
-      i) Open terminal
-      ii) npm install -g react-native-cli
-      iii) npm install -g expo-cli
-      iv) Check npm version: npm -v (Node Package Manager)
-4. Install basic/empty project through CLI:
-      a. npm install -g reactnative -cli
-      b. npm install -g expo-cli  
-5. Project Installation:
-      a.npx create-expo-app --template   
-7. Terminal: npm start
+3.    Open terminal
+4.    npm install -g react-native-cli
+5.    npm install -g expo-cli
+6.    Check npm version: npm -v (Node Package Manager)
+7. Install basic/empty project through CLI:
+
+      npm install -g reactnative -cli
+
+      npm install -g expo-cli  
+9. Project Installation:
+
+   npx create-expo-app --template
+   
+11. Terminal: npm start
 
 /////////////////////////////////////////////////////////////////////////////////////////
 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
