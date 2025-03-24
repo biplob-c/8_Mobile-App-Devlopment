@@ -1,0 +1,163 @@
+Question: Design two input fields and a button with a custom component in React Native, including frontend validation message
+
+
+import React, { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+
+const CustomForm = () => {
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+  
+  const [errors, setErrors] = useState({
+    email: '',
+    password: '',
+  });
+
+  const validateForm = () => {
+    let valid = true;
+    const newErrors = { email: '', password: '' };
+
+    // Email validation
+    if (!formData.email) {
+      newErrors.email = 'Email is required';
+      valid = false;
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Email is invalid';
+      valid = false;
+    }
+
+    // Password validation
+    if (!formData.password) {
+      newErrors.password = 'Password is required';
+      valid = false;
+    } else if (formData.password.length < 6) {
+      newErrors.password = 'Password must be at least 6 characters';
+      valid = false;
+    }
+
+    setErrors(newErrors);
+    return valid;
+  };
+
+  const handleSubmit = () => {
+    if (validateForm()) {
+      // Form is valid, proceed with submission
+      console.log('Form submitted:', formData);
+      // Add your submission logic here (API call, etc.)
+    }
+  };
+
+  const handleChange = (name, value) => {
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: '',
+      });
+    }
+  };
+
+  return (
+    <View style={styles.container}>
+      <CustomInput
+        label="Email"
+        placeholder="Enter your email"
+        value={formData.email}
+        onChangeText={(text) => handleChange('email', text)}
+        error={errors.email}
+        keyboardType="email-address"
+        autoCapitalize="none"
+      />
+      
+      <CustomInput
+        label="Password"
+        placeholder="Enter your password"
+        value={formData.password}
+        onChangeText={(text) => handleChange('password', text)}
+        error={errors.password}
+        secureTextEntry
+      />
+      
+      <CustomButton 
+        title="Submit" 
+        onPress={handleSubmit} 
+      />
+    </View>
+  );
+};
+
+// Custom Input Component
+const CustomInput = ({ label, error, ...props }) => {
+  return (
+    <View style={styles.inputContainer}>
+      <Text style={styles.label}>{label}</Text>
+      <TextInput
+        style={[styles.input, error ? styles.inputError : null]}
+        {...props}
+      />
+      {error ? <Text style={styles.errorText}>{error}</Text> : null}
+    </View>
+  );
+};
+
+// Custom Button Component
+const CustomButton = ({ title, onPress }) => {
+  return (
+    <TouchableOpacity style={styles.button} onPress={onPress}>
+      <Text style={styles.buttonText}>{title}</Text>
+    </TouchableOpacity>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+    justifyContent: 'center',
+  },
+  inputContainer: {
+    marginBottom: 20,
+  },
+  label: {
+    fontSize: 16,
+    marginBottom: 5,
+    color: '#333',
+  },
+  input: {
+    height: 50,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+    paddingHorizontal: 15,
+    fontSize: 16,
+  },
+  inputError: {
+    borderColor: 'red',
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 14,
+    marginTop: 5,
+  },
+  button: {
+    backgroundColor: '#007AFF',
+    padding: 15,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+});
+
+export default CustomForm;
