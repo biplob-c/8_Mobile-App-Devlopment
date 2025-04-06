@@ -1,5 +1,5 @@
 Question: Design two input fields and a button with a custom component in React Native, including frontend validation message
-
+-----------------------------------------------------------------------------------------------------------------------------
 
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
